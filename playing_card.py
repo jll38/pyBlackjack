@@ -1,7 +1,7 @@
 from typing import Self
 
 
-class playing_card:
+class Playing_Card:
     def __init__(self, rank: str, suit: str):
         self.rank = rank
         self.suit = suit
@@ -11,6 +11,3 @@ class playing_card:
     
     def __str__(self) -> str:
         return f"{self.rank} of {self.suit}"
-    
-    def create(rank: str, suit: str) -> Self:
-        return playing_card(rank, suit)

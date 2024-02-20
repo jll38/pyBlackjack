@@ -1,5 +1,5 @@
-from playing_card import playing_card
+from playing_card import Playing_Card
 
-card = playing_card.create("10", "Spade")
+card = Playing_Card.create("10", "Spade")
 
 print(card.rank)
