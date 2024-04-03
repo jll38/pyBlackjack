@@ -44,7 +44,8 @@ class Blackjack(Game):
         self.dealer.hit()
         self.player.hit()
         self.dealer.hit()
-        self.dealer.get_hand_array()
+        print(f"Player Hand: {self.player.get_hand_value()[0]} or {self.player.get_hand_value()[1]}")
+        print(f"Dealer Hand: {self.dealer.get_hand_value()[0]} or {self.dealer.get_hand_value()[1]}")
         while not self.stand:
             self.initiate_turn()
             print(f"Player {self.player.get_hand_value()} | Dealer {self.dealer.get_hand_value()}")
@@ -64,7 +65,8 @@ class Blackjack(Game):
         is_stand = input("Hit or Stand? (h\s)\n>>>")
         if is_stand == 's':
             self.stand = True
-        self.player.hit()
+        else:
+            self.player.hit()
 
 
     def check_values(self, hand: Blackjack_Hand) -> None:
