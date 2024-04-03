@@ -18,6 +18,12 @@ class Playing_Card:
     def __str__(self) -> str:
         return f"{self.rank} of {self.suit}"
 
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Playing_Card):
+            # Don't attempt to compare against unrelated types
+            return NotImplemented
+        return self.rank == other.rank and self.suit == other.suit
+    
     def get_numeric(self) -> List[int]:
         """Returns the numeric values of the card. For Aces, returns [1, 11]. For face cards and 10, returns [10].
         For other ranks, returns their numeric value as a list."""
