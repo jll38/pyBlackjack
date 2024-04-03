@@ -31,6 +31,7 @@ class Blackjack(Game):
     def initiate_turn(self) -> None:
         pass
 
-    def check_values(self) -> None:
+    def check_values(self, hand : Blackjack_Hand) -> None:
         print("Checking values...")
+        print(hand.get_hand_value())
         
