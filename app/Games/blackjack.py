@@ -15,6 +15,30 @@ class Blackjack(Game):
         self.dealer = Blackjack_Hand(self.deck, True)
         self.dealer.add_subscribed_game(self)
 
+    def compare_player_values(self):
+    # Get the hand values for the player and dealer
+        player_value = self.player.get_hand_value()
+        dealer_value = self.dealer.get_hand_value()
+
+    # Adjust for Aces if the second value is over 21
+        player_final_value = player_value[0] if player_value[1] > 21 else player_value[1]
+        dealer_final_value = dealer_value[0] if dealer_value[1] > 21 else dealer_value[1]
+
+    # Compare the final values to determine the winner
+        if player_final_value > 21:  # Player busts
+            self.end(True)  # Dealer wins
+        elif dealer_final_value > 21:  # Dealer busts
+            self.end(False)  # Player wins
+        elif player_final_value > dealer_final_value:
+            self.end(False)  # Player wins
+        elif dealer_final_value > player_final_value:
+            self.end(True)  # Dealer wins
+        else:
+            print("It's a tie!")
+        
+
+        
+
     def start(self) -> None:
         self.player.hit()
         self.dealer.hit()
@@ -26,12 +50,15 @@ class Blackjack(Game):
             print(f"Player {self.player.get_hand_value()} | Dealer {self.dealer.get_hand_value()}")
         while not self.dealer.get_hand_value()[0] > 17 and not self.dealer.get_hand_value()[1] > 17:
             self.dealer.hit()
+        self.compare_player_values()
 
-    def end(self, winner: bool) -> None:
+    def end(self, winner: bool = None) -> None:
+        if winner is None:
+            print("It's a tie!")
         print(f"Winner: {'Dealer' if winner else 'Player'}")
         replay = input("Play again? (y\\n)\n>>>")
         if replay == 'y':
-            self.start()
+            Blackjack().start()
 
     def initiate_turn(self) -> None:
         is_stand = input("Hit or Stand? (h\s)\n>>>")
