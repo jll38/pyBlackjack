@@ -27,7 +27,10 @@ class Blackjack_Hand(Hand):
         self.hand.append(card)
         self.total[0] = self.total[0] + card.get_numeric()[0]
         if len(card.get_numeric()) > 1:
-            self.total[1] = self.total[1] + card.get_numeric()[1]
+            if card.get_numeric()[1] > 21:
+                self.total[0] = self.total[0] + card.get_numeric()[1]
+            else:
+                self.total[1] = self.total[1] + card.get_numeric()[1]
         else:
             self.total[1] = self.total[1] + card.get_numeric()[0]
 
