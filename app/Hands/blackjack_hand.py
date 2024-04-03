@@ -27,8 +27,9 @@ class Blackjack_Hand(Hand):
         print("Hit")
         try:
             #self.hand.push(self.assigned_deck.deal_card())
-            selected = self.assigned_deck.deal_card()
-            print(selected.get_numeric())
+            hit_card = self.assigned_deck.deal_card()
+            self.hand.append(hit_card)
+            print(f"Player received a {hit_card} ")
         except:
             print("Assigned Deck is missing or invalid.")
             print(f"Hand is now {self.get_hand_array}")
