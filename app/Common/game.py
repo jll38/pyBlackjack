@@ -19,5 +19,8 @@ class Game(ABC):
     @abstractmethod
     def initiate_turn(self) -> None:
         pass
-
+    
+    @abstractmethod
+    def check_values(self) -> None:
+        pass
 
