@@ -1,5 +1,7 @@
+import os
 import app
 def main():
+    os.system('cls||clear')
     app.run()
     
     
