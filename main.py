@@ -1,8 +1,8 @@
 import os
-import app
+from app import App
 def main():
     os.system('cls||clear')
-    app.run()
+    app = App().run()
     
     
 

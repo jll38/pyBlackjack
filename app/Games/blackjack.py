@@ -1,10 +1,23 @@
 from ..Common.deck import Deck
-from abc import ABC, abstractmethod 
 from ..Common.game import Game
+from app.Hands.blackjack_hand import Blackjack_Hand
 
 class Blackjack(Game):
+    def __init__(self):
+        super().__init__(); 
+        self.deck = Deck()
+        self.deck.shuffle()
+        self.player = Blackjack_Hand(self.deck)
+        self.dealer = Blackjack_Hand(self.deck, True)
 
     def start(self) -> None:
+        self.player.hit()
+        self.dealer.hit()
+        self.player.hit()
+        self.dealer.hit()
+        print(self.player.get_hand_array())
+        self.dealer.get_hand_array()
+        print(self.dealer.get_hand_array())
         while True:
             break
 
