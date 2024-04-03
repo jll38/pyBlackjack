@@ -9,12 +9,6 @@ class Blackjack_Hand(Hand):
         self.hand = []
         self.subscribed_game = None
 
-    def add_subscribed_game(self):
-        pass
-
-    def remove_subscribed_game(self):
-        self.subscribed_game = None
-
     def get_hand(self):
         pass
 
@@ -28,6 +22,10 @@ class Blackjack_Hand(Hand):
             hit_card = self.assigned_deck.deal_card()
             self.hand.append(hit_card)
             print(f"{self.player_name} received a {hit_card} ")
+            self.notify_game()
         except:
             print("Assigned Deck is missing or invalid.")
             print(f"Hand is now {self.get_hand_array}")
+
+    def notify_game(self):
+        self.subscribed_game.check_values()

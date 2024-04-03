@@ -3,7 +3,6 @@ import os
 from ..Common.deck import Deck
 from abc import ABC, abstractmethod
 
-
 class Game(ABC):
 
     def __init__(self):
@@ -20,3 +19,5 @@ class Game(ABC):
     @abstractmethod
     def initiate_turn(self) -> None:
         pass
+
+
